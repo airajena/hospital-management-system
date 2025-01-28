@@ -2,6 +2,7 @@ package com.hms.hms.services;
 
 import com.hms.hms.models.Patient;
 import com.hms.hms.repositories.PatientRepository;
+import jakarta.transaction.Transactional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@Transactional
 public class PatientService {
 
     private static final Logger logger = LogManager.getLogger(PatientService.class);

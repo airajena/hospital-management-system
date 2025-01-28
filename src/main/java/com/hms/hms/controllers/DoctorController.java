@@ -4,6 +4,7 @@ import com.hms.hms.models.Doctor;
 import com.hms.hms.services.DoctorService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -49,6 +50,7 @@ public class DoctorController {
 
     // Retrieves a specific doctor's details by their ID
     @GetMapping("/{id}")
+//    @Cacheable(value = "doctors", key = "#id")
     public ResponseEntity<Doctor> getDoctorById(@PathVariable Long id) {
         try {
             logger.info("Request received to fetch doctor with ID: {}", id);
