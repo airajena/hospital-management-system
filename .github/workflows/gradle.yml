@@ -41,3 +41,5 @@ jobs:
 
       - name: Generate and submit dependency graph
         uses: gradle/actions/dependency-submission@v4 # Updated to the latest version
+      - name: Grant execute permission for Gradle Wrapper
+        run: chmod +x gradlew
