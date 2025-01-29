@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 5s  # Collect metrics every 5 seconds
+  evaluation_interval: 5s  # Evaluate rules every 5 seconds
+
+scrape_configs:
+  - job_name: 'hms-metrics'
+    metrics_path: '/actuator/prometheus'  # Ensure your Spring Boot app exposes this
+    static_configs:
+      - targets: ['host.docker.internal:8080']  # Accessing Spring Boot from inside Docker
