@@ -37,8 +37,25 @@ services:
       - hms-network
     restart: unless-stopped
 
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000" # Grafana UI
+    depends_on:
+      - prometheus
+    networks:
+      - hms-network
+    volumes:
+      - grafana-data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    restart: unless-stopped
+
 volumes:
   mysql-data:
+  grafana-data:
 
 networks:
   hms-network:
